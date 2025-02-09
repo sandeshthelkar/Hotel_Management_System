@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 @Data
 public class ReservationRequest {
 
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime reservationDateTime;
 
