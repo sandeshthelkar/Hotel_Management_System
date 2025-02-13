@@ -1,7 +1,6 @@
 package com.codeWithProject.HotelServer.enums;
 
-public enum UserRole {
-
+public enum Role {
     ADMIN,
     CUSTOMER
 }

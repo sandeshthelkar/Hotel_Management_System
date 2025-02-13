@@ -1,6 +1,6 @@
 package com.codeWithProject.HotelServer.entity;
 
-import com.codeWithProject.HotelServer.enums.UserRole;
+import com.codeWithProject.HotelServer.enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,11 +30,11 @@ public class User implements UserDetails {
     private String name;
 
     @Enumerated(EnumType.STRING)
-    private UserRole userRole;
+    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(userRole.name()));
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override

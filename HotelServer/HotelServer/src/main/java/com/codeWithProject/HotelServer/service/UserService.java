@@ -15,11 +15,11 @@ public class UserService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public User getUserByEmail(String email){
-        return userRepository.findByEmail(email).orElseThrow(
-                ()-> new RuntimeException("User not found")
-        );
-    }
+//    public User getUserByEmail(String email){
+//        return userRepository.findByEmail(email).orElseThrow(
+//                ()-> new RuntimeException("User not found")
+//        );
+//    }
 
     public User createNewUser(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
