@@ -7,15 +7,16 @@ import lombok.Setter;
 @Setter
 public class AuthRequest {
 
-    private String Username;
+    private String email;
     private String password;
+    private String name;
 
-    public String getUsername() {
-        return Username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        Username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -24,5 +25,13 @@ public class AuthRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

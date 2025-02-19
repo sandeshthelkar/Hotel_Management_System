@@ -3,7 +3,6 @@ package com.codeWithProject.HotelServer.service.authService;
 import com.codeWithProject.HotelServer.dto.AuthRequest;
 import com.codeWithProject.HotelServer.dto.AuthResponse;
 import com.codeWithProject.HotelServer.utill.JwtUtil;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class AuthService {
 
     private final AuthenticationManager authenticationManager;
@@ -23,12 +22,17 @@ public class AuthService {
 
     private final UserDetailsService userDetailsService;
 
+    public AuthService(AuthenticationManager authenticationManager, JwtUtil jwtUtil, UserDetailsService userDetailsService) {
+        this.authenticationManager = authenticationManager;
+        this.jwtUtil = jwtUtil;
+        this.userDetailsService = userDetailsService;
+    }
 
     public AuthResponse authenticate(AuthRequest authRequest){
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(authRequest.getUsername(),authRequest.getPassword())
+                new UsernamePasswordAuthenticationToken(authRequest.getEmail(),authRequest.getPassword())
         );
-        UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getUsername());
+        UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getEmail());
 
         String roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)

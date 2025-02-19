@@ -12,7 +12,7 @@ import java.util.Map;
 @Component
 public class JwtUtil {
 
-    private static final String SECRET_KEY = "mysecretkeymysecretkeymysecretkey12"; 
+    private static final String SECRET_KEY = "kD7M2xzB9vV8RyJX4tpq6F8ZpTc5nJ4Lz3F+5s2O7Wc=";
 
     private Key getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);

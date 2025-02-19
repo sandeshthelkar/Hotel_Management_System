@@ -37,8 +37,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll() // Public APIs
-                        .requestMatchers("/api/admin/**").hasRole("ADMIN") // Only Admin
-                        .requestMatchers("/api/customer/**").hasRole("CUSTOMER") // Only Customer
+                        .requestMatchers("/api/admin/**").hasAuthority("ROLE_ADMIN") // Only Admin
+                        .requestMatchers("/api/customer/**").hasAuthority("ROLE_CUSTOMER") // Only Customer
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
